@@ -27,21 +27,21 @@ namespace JWTWebApi.Controllers
             return Ok(user);
         }
 
-        //[HttpPost("login")]
+        [HttpPost("login")]
 
-        //public async Task<ActionResult<string>> Login(UserDto request)
-        //{
-        //    if (user.UserName != request.UserName)
-        //    {
-        //        return BadRequest("Invalid UserName");
-        //    }
-        //    if (!_userDetails.VarifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
-        //    {
-        //        return BadRequest("Wrong Password");
-        //    }
-        //    string token = _userDetails.CreateToken(user);
-        //    return Ok(token);
-        //}
+        public async Task<ActionResult<string>> Login(UserDto request)
+        {
+            if (user.UserName != request.UserName)
+            {
+                return BadRequest("Invalid UserName");
+            }
+            if (!_userDetails.VarifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            {
+                return BadRequest("Wrong Password");
+            }
+            string token = _userDetails.CreateToken(user);
+            return Ok(token);
+        }
 
     }
 }
